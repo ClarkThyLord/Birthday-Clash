@@ -8,7 +8,16 @@
 
     <style>
 			body { margin: 0; }
-			canvas {
+
+      #chart-canvas {
+        position: absolute;
+        top: 64px;
+        left: 32px;
+        max-width: 200px;
+        max-height: 200px;
+      }
+
+			#main-canvas {
         width: 100%;
         height: 100%;
         display: block;
@@ -16,5 +25,6 @@
 		</style>
   </head>
   <body>
+    <canvas id="chart-canvas" width="200" height="200"></canvas>
   </body>
 </html>
