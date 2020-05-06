@@ -102,7 +102,7 @@ window.solve_paradox = function () {
 
 
   let labels = ["Other"]
-  let colors = ["#32d115"]
+  let colors = ["#808080"]
   let data = [0]
   this.Object.keys(birthdays).forEach(function (birthday, index) {
     if (Array.isArray(birthdays[birthday])) {
