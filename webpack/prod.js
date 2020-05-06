@@ -6,7 +6,6 @@ const TerserPlugin = require("terser-webpack-plugin");
 module.exports = merge(base, {
   mode: "production",
   output: {
-    publicPath: "https://raw.githubusercontent.com/ClarkThyLord/Birthday-Clash/master/",
     path: path.resolve(__dirname, '../docs'),
     filename: "bundle.min.js"
   },
