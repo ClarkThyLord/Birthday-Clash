@@ -79,7 +79,7 @@ const game = new Phaser.Game({
 
 
 function preload() {
-  this.load.spritesheet('person.walking', 'src/assets/person.walking.png', {
+  this.load.spritesheet('person.walking', 'https://raw.githubusercontent.com/ClarkThyLord/Birthday-Clash/master/src/assets/person.walking.png', {
     frameWidth: 32,
     frameHeight: 32,
     endFrame: 0
