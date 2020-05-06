@@ -54,6 +54,8 @@ gui.add(window, "walking_speed", 0.01, 1.0, 0.01);
 
 window.amount_of_people = 32;
 gui.add(window, "amount_of_people", 2, 1000, 1).onChange(function (amount) {
+  solved = false;
+  people.forEach((person, index) => person.setTint(person.getData('color')));
   while (amount != people.length) {
     if (amount > people.length) {
       spawn_person(scene);
@@ -64,6 +66,7 @@ gui.add(window, "amount_of_people", 2, 1000, 1).onChange(function (amount) {
 });
 
 window.solve_paradox = function () {
+  if (solved) return;
   solved = true;
   walking = false;
   var birthdays = {};
