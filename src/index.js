@@ -10,6 +10,7 @@ var hint;
 var solved = false;
 
 var chart;
+var probability;
 
 var people = [];
 
@@ -61,6 +62,7 @@ window.amount_of_people = 32;
 gui.add(window, "amount_of_people", 2, 1000, 1).onChange(function (amount) {
   solved = false;
   if (typeof (chart) == 'object') chart.destroy();
+  if (typeof (probability) == 'object') probability.destroy();
   people.forEach((person, index) => person.setTint(person.getData("color")));
   while (amount != people.length) {
     if (amount > people.length) {
@@ -135,12 +137,74 @@ window.solve_paradox = function () {
       }
     }
   });
+
+  if (typeof (probability) == 'object') probability.destroy();
+
+  var C;
+  var N = people.length;
+  var probabilities = [];
+  for (C = 2.0; C <= 10; C++) {
+    var Binom = 0.0;
+    for (var i = 0.0; i < C; i++) {
+      Binom += Math.log10(N - i);
+      Binom -= Math.log10(i + 1);
+    }
+    var result = Math.pow(10, Binom);
+    result = 1 - Math.exp(-(result) / (Math.pow(365, C - 1)));
+    if (result > 0.0000001)
+      probabilities.push(result);
+  }
+
+  labels = [];
+  probabilities.forEach(function (value, index) {
+    labels.push(index);
+  });
+
+  probability = new Chart(document.getElementById("probability-canvas"), {
+    type: 'line',
+    data: {
+      labels: labels,
+      datasets: [{
+        label: 'Birthday Clash %',
+        backgroundColor: 'rgb(255, 192, 203)',
+        borderColor: 'rgb(255, 192, 203)',
+        pointBackgroundColor: 'rgb255, 192, 203)',
+        pointBorderColor: 'rgb(255, 192, 203)',
+        data: probabilities,
+        fill: true,
+      }]
+    },
+    options: {
+      responsive: true,
+      tooltips: {
+        mode: 'index',
+        intersect: false,
+      },
+      scales: {
+        xAxes: [{
+          display: true,
+          scaleLabel: {
+            display: true,
+            labelString: 'Month'
+          }
+        }],
+        yAxes: [{
+          display: true,
+          scaleLabel: {
+            display: true,
+            labelString: 'Value'
+          }
+        }]
+      }
+    }
+  });
 }
 gui.add(window, "solve_paradox");
 
 window.refresh_population = function () {
   solved = false;
   if (typeof (chart) == 'object') chart.destroy();
+  if (typeof (probability) == 'object') probability.destroy();
   while (people.length > 0) despawn_person(people.length - 1);
   while (people.length < amount_of_people) spawn_person(scene);
 }

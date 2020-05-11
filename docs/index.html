@@ -8,6 +8,7 @@
   <link rel="icon" href="https://raw.githubusercontent.com/ClarkThyLord/Birthday-Clash/master/src/assets/icon.svg">
 
   <style>
+
     body {
       margin: 0;
     }
@@ -15,6 +16,14 @@
     #chart-canvas {
       position: absolute;
       top: 64px;
+      left: 32px;
+      max-width: 200px;
+      max-height: 200px;
+    }
+
+    #probability-canvas {
+      position: absolute;
+      top: 264px;
       left: 32px;
       max-width: 200px;
       max-height: 200px;
@@ -41,8 +50,11 @@
 
 <body>
   <canvas id="chart-canvas" width="200" height="200"></canvas>
+  <canvas id="probability-canvas" width="200" height="200"></canvas>
   <a href="https://github.com/ClarkThyLord/Birthday-Clash">
-    <img src="https://raw.githubusercontent.com/ClarkThyLord/Birthday-Clash/master/src/assets/GitHub-Mark-Light-32px.png" alt="GitHub" class="github-button">
+    <img
+      src="https://raw.githubusercontent.com/ClarkThyLord/Birthday-Clash/master/src/assets/GitHub-Mark-Light-32px.png"
+      alt="GitHub" class="github-button">
   </a>
 <script type="text/javascript" src="bundle.min.js"></script></body>
 
