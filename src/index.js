@@ -151,7 +151,7 @@ window.solve_paradox = function () {
     }
     var result = Math.pow(10, Binom);
     result = 1 - Math.exp(-(result) / (Math.pow(365, C - 1)));
-    if (result > 0.0000001)
+    if (result > 0.000001)
       probabilities.push(result);
   }
 
