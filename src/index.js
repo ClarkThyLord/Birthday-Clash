@@ -157,8 +157,9 @@ window.solve_paradox = function () {
 
   labels = [];
   probabilities.forEach(function (value, index) {
-    labels.push(index);
+    labels.push(index + 1);
   });
+
 
   probability = new Chart(document.getElementById("probability-canvas"), {
     type: 'line',
@@ -185,14 +186,14 @@ window.solve_paradox = function () {
           display: true,
           scaleLabel: {
             display: true,
-            labelString: 'Month'
+            labelString: 'Clashes'
           }
         }],
         yAxes: [{
           display: true,
           scaleLabel: {
             display: true,
-            labelString: 'Value'
+            labelString: 'Probability'
           }
         }]
       }
